@@ -1,7 +1,7 @@
 import os
 from flask import Flask, request
 
-api_peri = Flask(__name__)
+app = Flask(__name__)
 aparelhos = [
     {
         "id": 0,
@@ -20,17 +20,17 @@ aparelhos = [
     }
 ]
 
-@api_peri.route("/", methods=['GET'])
+@app.route("/", methods=['GET'])
 def aparelhos_get():
     return aparelhos
 
-@api_peri.route("/post", methods=['POST'])
+@app.route("/post", methods=['POST'])
 def aparelhos_creat():
     novo_aparelho = request.json
     aparelhos.append(novo_aparelho)
     return aparelhos
 
-@api_peri.route("/delete", methods=['DELETE'])
+@app.route("/delete", methods=['DELETE'])
 def aparelhos_delet():
     delet_aparelho = request.json
     if delet_aparelho in aparelhos:
@@ -39,7 +39,7 @@ def aparelhos_delet():
     else:
         return "<h1>Aparelho não encontrado!</h1>"
     
-@api_peri.route("/put", methods=['PUT'])
+@app.route("/put", methods=['PUT'])
 def aparelho_put():
     put_aparelho = request.json
     id = put_aparelho.get("id")
@@ -50,7 +50,7 @@ def aparelho_put():
         
     return aparelhos 
  
-@api_peri.route("/patch", methods=['PATCH'])
+@app.route("/patch", methods=['PATCH'])
 def aparelho_patch():
     patch_aparelho = request.json
     id = patch_aparelho.get("id")
@@ -62,7 +62,6 @@ def aparelho_patch():
         
     return aparelhos  
 
-port = int(os.environ.get("PORT", 5000))
-api_peri.run(host='0.0.0.0', port=port)
+app.run()
 
  
