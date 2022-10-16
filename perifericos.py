@@ -1,7 +1,23 @@
 from flask import Flask, request
-from bd import aparelhos
 
 api_peri = Flask(__name__)
+aparelhos = [
+    {
+        "id": 0,
+        "marca": "hyperx",
+        "nome": "Temp v2"
+    },
+    {
+        "id": 1,
+        "marca": "logitech",
+        "nome": "G922"
+    },
+    {
+        "id": 5444,
+        "marca": "Razer",
+        "nome": "Basilisk"
+    }
+]
 
 @api_peri.route("/", methods=['GET'])
 def aparelhos_get():
