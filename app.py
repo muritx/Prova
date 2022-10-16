@@ -63,5 +63,3 @@ def aparelho_patch():
     return aparelhos  
 
 app.run()
-
- 
