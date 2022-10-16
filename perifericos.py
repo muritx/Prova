@@ -1,3 +1,4 @@
+import os
 from flask import Flask, request
 
 api_peri = Flask(__name__)
@@ -60,4 +61,8 @@ def aparelho_patch():
     aparelhos[id]["marca"] = marca
         
     return aparelhos  
-api_peri.run()
+
+port = int(os.environ.get("PORT", 5000))
+api_peri.run(host='0.0.0.0', port=port)
+
+ 
